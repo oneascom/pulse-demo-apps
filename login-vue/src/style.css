@@ -1,0 +1,300 @@
+@import "@pulse/tokens";
+
+@font-face {
+  font-family: "Inter:Medium";
+  src: url("https://static.figma.com/font/Inter_1") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Inter:Regular";
+  src: url("https://static.figma.com/font/Inter_1") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Roboto:Medium";
+  src: url("https://static.figma.com/font/Roboto_wdth_wght__3") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Roboto:Regular";
+  src: url("/fonts/Roboto-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+}
+
+:root {
+  --app-space-0: 0;
+  --app-space-1: 0.25rem;
+  --app-space-2: 0.5rem;
+  --app-space-3: 0.75rem;
+  --app-space-4: 1rem;
+  --app-space-6: 1.5rem;
+  --app-space-8: 2rem;
+  --app-space-12: 3rem;
+  --app-control-height: 3.5rem;
+  --app-form-width: 25.3125rem;
+  --app-logo-width: 8.875rem;
+  --app-logo-height: 1.8125rem;
+  --app-illustration-width: 38rem;
+  --app-title-size: var(--md-sys-typescale-headline-small-font-size);
+  --app-title-line-height: var(--md-sys-typescale-headline-small-line-height);
+  --app-body-size: var(--md-sys-typescale-body-large-font-size);
+  --app-body-line-height: var(--md-sys-typescale-body-large-line-height);
+  --app-label-size: var(--md-sys-typescale-label-large-font-size);
+  --app-label-line-height: var(--md-sys-typescale-label-large-line-height);
+  --app-shape-field: var(--md-sys-shape-corner-value-medium);
+  --app-shape-panel: var(--md-sys-shape-corner-value-large, 1rem);
+  --app-illustration-gradient: linear-gradient(
+      171deg,
+      color-mix(in srgb, var(--schemes-secondary-container) 0%, transparent)
+        6%,
+      color-mix(in srgb, var(--schemes-secondary-container) 30%, transparent)
+        16%,
+      color-mix(in srgb, var(--schemes-secondary-container) 60%, transparent)
+        69%
+    ),
+    linear-gradient(
+      90deg,
+      var(--schemes-surface-container-lowest),
+      var(--schemes-surface-container-lowest)
+    );
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    min-width: 20rem;
+    background: var(--schemes-surface);
+  }
+}
+
+.login-page {
+  display: grid;
+  min-height: 100dvh;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  overflow: hidden;
+  background: var(--schemes-surface);
+}
+
+.login-content {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  padding: var(--app-space-12) var(--app-space-8);
+}
+
+.brand-logo {
+  position: absolute;
+  top: var(--app-space-8);
+  left: var(--app-space-8);
+  width: var(--app-logo-width);
+  height: var(--app-logo-height);
+}
+
+.login-form {
+  display: flex;
+  width: min(100%, var(--app-form-width));
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--app-space-8);
+}
+
+.login-title {
+  color: var(--schemes-on-surface-variant);
+  font-family: "Inter:Regular";
+  font-size: var(--app-title-size);
+  font-weight: 400;
+  line-height: var(--app-title-line-height);
+  text-align: center;
+}
+
+.login-button {
+  display: block;
+  width: 100%;
+  --m3e-button-container-height: var(--app-control-height);
+}
+
+.login-button--provider {
+  color: var(--schemes-on-secondary-container);
+  font-family: "Inter:Medium";
+  font-size: var(--app-body-size);
+  font-weight: 500;
+  line-height: var(--app-body-line-height);
+  --m3e-button-container-color: var(--schemes-secondary-container);
+  --m3e-button-label-text-color: var(--schemes-on-secondary-container);
+}
+
+.login-divider {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--app-space-6);
+  color: var(--schemes-on-surface-variant);
+  font-family: "Inter:Medium";
+  font-size: var(--app-label-size);
+  font-weight: 500;
+  line-height: var(--app-label-line-height);
+}
+
+.login-divider m3e-divider {
+  --m3e-divider-color: var(--schemes-outline);
+}
+
+.login-fields {
+  display: grid;
+  gap: var(--app-space-6);
+}
+
+.login-field {
+  display: block;
+  width: 100%;
+  min-height: var(--app-control-height);
+  color: var(--schemes-on-surface-variant);
+  font-family: "Roboto:Regular";
+  font-size: var(--app-body-size);
+  font-weight: 400;
+  line-height: var(--app-body-line-height);
+  --m3e-form-field-width: 100%;
+  --m3e-form-field-color: var(--schemes-on-surface-variant);
+  --m3e-form-field-outline-color: var(--schemes-outline);
+  --m3e-form-field-focused-outline-color: var(--schemes-primary);
+  --m3e-outlined-form-field-container-shape: var(--app-shape-field);
+}
+
+.login-field--error {
+  --m3e-form-field-color: var(--schemes-error);
+  --m3e-form-field-outline-color: var(--schemes-error);
+  --m3e-form-field-focused-color: var(--schemes-error);
+  --m3e-form-field-focused-outline-color: var(--schemes-error);
+  --m3e-form-field-invalid-color: var(--schemes-error);
+}
+
+.login-field input {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  outline: none;
+  font-family: "Roboto:Regular";
+  font-size: var(--app-body-size);
+  font-weight: 400;
+  line-height: var(--app-body-line-height);
+}
+
+.field-icon {
+  width: var(--app-space-6);
+  height: var(--app-space-6);
+}
+
+.field-action {
+  font-family: "Roboto:Regular";
+}
+
+.field-action img,
+.utility-actions img {
+  width: var(--app-space-6);
+  height: var(--app-space-6);
+}
+
+.login-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--app-space-4);
+}
+
+.login-button--submit {
+  font-family: "Roboto:Medium";
+  font-size: var(--app-body-size);
+  font-variation-settings: "wdth" 100;
+  font-weight: 500;
+  line-height: var(--app-body-line-height);
+  --m3e-button-container-color: var(--schemes-primary);
+  --m3e-button-label-text-color: var(--schemes-on-primary);
+}
+
+.login-button--help {
+  min-height: var(--app-space-12);
+  color: var(--schemes-primary);
+  font-family: "Inter:Medium";
+  font-size: var(--app-label-size);
+  font-weight: 500;
+  line-height: var(--app-label-line-height);
+  --m3e-button-label-text-color: var(--schemes-primary);
+}
+
+.utility-actions {
+  position: absolute;
+  bottom: var(--app-space-8);
+  left: var(--app-space-8);
+  display: flex;
+}
+
+.login-illustration {
+  position: relative;
+  justify-self: end;
+  align-self: stretch;
+  width: min(calc(100% - var(--app-space-8)), var(--app-illustration-width));
+  min-height: calc(100dvh - (var(--app-space-8) * 2));
+  margin-block: var(--app-space-8);
+  margin-right: var(--app-space-8);
+  overflow: hidden;
+  border-radius: var(--app-shape-panel);
+  clip-path: inset(0 round var(--app-shape-panel));
+  background: var(--app-illustration-gradient);
+}
+
+.illustration-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+@media (max-width: 959.98px) {
+  .login-page {
+    grid-template-columns: 1fr;
+  }
+
+  .login-content {
+    min-height: 100dvh;
+    padding: calc(var(--app-space-12) * 2) var(--app-space-6)
+      calc(var(--app-space-12) + var(--app-space-8));
+  }
+
+  .login-illustration {
+    display: none;
+  }
+}
+
+@media (max-width: 599.98px) {
+  .login-content {
+    align-items: flex-start;
+    padding-right: var(--app-space-4);
+    padding-left: var(--app-space-4);
+  }
+
+  .brand-logo {
+    top: var(--app-space-6);
+    left: var(--app-space-4);
+  }
+
+  .utility-actions {
+    bottom: var(--app-space-4);
+    left: var(--app-space-2);
+  }
+}
